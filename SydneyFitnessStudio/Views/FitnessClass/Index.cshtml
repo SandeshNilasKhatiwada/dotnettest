@@ -1,0 +1,38 @@
+@model IEnumerable<SydneyFitnessStudio.Models.FitnessClass>
+
+@{
+    ViewData["Title"] = "Fitness Classes";
+}
+
+<h1>Fitness Classes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ClassName)</th>
+            <th>@Html.DisplayNameFor(model => model.Instructor)</th>
+            <th>@Html.DisplayNameFor(model => model.Schedule)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ClassName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Instructor)</td>
+                <td>@Html.DisplayFor(modelItem => item.Schedule)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.FitnessClassId" class="btn btn-warning">Edit</a>
+                    <form asp-action="Delete" asp-route-id="@item.FitnessClassId" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

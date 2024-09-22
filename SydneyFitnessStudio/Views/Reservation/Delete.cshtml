@@ -1,0 +1,22 @@
+@model SydneyFitnessStudio.Models.Reservation
+
+<h2>Delete Reservation</h2>
+
+<div class="form-group">
+    <h4>Are you sure you want to delete this reservation?</h4>
+    <div>
+        <strong>Class Name:</strong> @Model.FitnessClass.ClassName
+    </div>
+    <div>
+        <strong>Instructor:</strong> @Model.FitnessClass.Instructor
+    </div>
+    <div>
+        <strong>Reservation Date:</strong> @Model.ReservationDate.ToString("yyyy-MM-dd HH:mm")
+    </div>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="ReservationId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Back to My Reservations</a>
+</form>

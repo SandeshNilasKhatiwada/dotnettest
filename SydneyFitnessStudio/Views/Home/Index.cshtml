@@ -1,0 +1,31 @@
+﻿@model IEnumerable<SydneyFitnessStudio.Models.FitnessClass>
+
+@{
+    ViewBag.Title = "Classes";
+}
+
+<h2>Available Classes</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Class Name</th>
+            <th>Instructor</th>
+            <th>Schedule</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var fitnessClass in Model)
+    {
+        <tr>
+            <td>@fitnessClass.ClassName</td>
+            <td>@fitnessClass.Instructor</td>
+            <td>@fitnessClass.Schedule.ToString("g")</td>
+            <td>
+                <a href="@Url.Action("Book", "Reservation", new { classId = fitnessClass.FitnessClassId })" class="btn btn-primary">Book</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

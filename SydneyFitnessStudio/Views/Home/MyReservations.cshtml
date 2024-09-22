@@ -1,0 +1,33 @@
+@model IEnumerable<SydneyFitnessStudio.Models.Reservation>
+
+@{
+    ViewBag.Title = "My Reservations";
+}
+
+<h2>My Reservations</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Class Name</th>
+            <th>Instructor</th>
+            <th>Schedule</th>
+            <th>Reservation Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var reservation in Model)
+    {
+        <tr>
+            <td>@reservation.FitnessClass.ClassName</td>
+            <td>@reservation.FitnessClass.Instructor</td>
+            <td>@reservation.FitnessClass.Schedule.ToString("g")</td>
+            <td>@reservation.ReservationDate.ToString("g")</td>
+            <td>
+                <a href="@Url.Action("Cancel", "Reservation", new { id = reservation.ReservationId })" class="btn btn-danger">Cancel</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

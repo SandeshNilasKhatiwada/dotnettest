@@ -1,0 +1,29 @@
+@model IEnumerable<SydneyFitnessStudio.Models.Reservation>
+
+<h2>My Reservations</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Class Name</th>
+            <th>Instructor</th>
+            <th>Reservation Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var reservation in Model)
+    {
+        <tr>
+            <td>@reservation.FitnessClass.ClassName</td>
+            <td>@reservation.FitnessClass.Instructor</td>
+            <td>@reservation.ReservationDate.ToString("yyyy-MM-dd HH:mm")</td>
+            <td>
+                <form asp-action="Delete" asp-route-id="@reservation.ReservationId" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

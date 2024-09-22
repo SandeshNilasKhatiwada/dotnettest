@@ -1,0 +1,16 @@
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Dashboard</h2>
+
+@if (User.IsInRole("Staff"))
+{
+    <h3>Manage Classes</h3>
+    <a href="@Url.Action("Index", "FitnessClass")" class="btn btn-primary">View Classes</a>
+}
+else if (User.IsInRole("Client"))
+{
+    <h3>Book Classes</h3>
+    <a href="@Url.Action("Index", "FitnessClass")" class="btn btn-primary">View Available Classes</a>
+}
